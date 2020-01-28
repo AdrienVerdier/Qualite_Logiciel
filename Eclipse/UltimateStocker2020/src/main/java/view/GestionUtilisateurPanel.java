@@ -64,7 +64,7 @@ public class GestionUtilisateurPanel extends JPanel implements ActionListener{
 		modifierButton = new JButton("Modifier");
 		modifierButton.setLayout(new BorderLayout());
 		modifierButton.setFont(new Font("Arial", Font.BOLD, 20));
-		modifierButton.setBounds(50, 75, 100, 50);
+		modifierButton.setBounds(appInterface.windowsSizeX - 225, appInterface.windowsSizeY - 350, 175, 50);
 		modifierButton.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 		modifierButton.setBackground(Color.LIGHT_GRAY);
 		modifierButton.setOpaque(true);
@@ -72,7 +72,7 @@ public class GestionUtilisateurPanel extends JPanel implements ActionListener{
 		modifierButton.addActionListener(this);
 
 		addButton = new JButton("Ajouter");
-		addButton.setBounds(appInterface.windowsSizeX - 225, 75, 175, 50);
+		addButton.setBounds(appInterface.windowsSizeX - 225, appInterface.windowsSizeY - 500, 175, 50);
 		addButton.setFont(new Font("Arial", Font.BOLD, 20));
 		addButton.setForeground(Color.BLACK);
 		addButton.setBackground(Color.LIGHT_GRAY);
@@ -97,7 +97,7 @@ public class GestionUtilisateurPanel extends JPanel implements ActionListener{
 		sorter = new TableRowSorter<myTableUtilisateurManagement>(tablemodel);
 
 		suppressButton = new JButton("Supprimer");
-		suppressButton.setBounds(appInterface.windowsSizeX - 225, 225, 175, 50);
+		suppressButton.setBounds(appInterface.windowsSizeX - 225, appInterface.windowsSizeY - 425, 175, 50);
 		suppressButton.setFont(new Font("Arial", Font.BOLD, 20));
 		suppressButton.setForeground(Color.BLACK);
 		suppressButton.setBackground(Color.LIGHT_GRAY);

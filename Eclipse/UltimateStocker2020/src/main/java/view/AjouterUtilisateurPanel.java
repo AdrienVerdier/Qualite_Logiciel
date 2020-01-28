@@ -45,13 +45,13 @@ public class AjouterUtilisateurPanel extends JPanel implements ActionListener {
 		label = new JLabel("Ajout/Modification d'un utilisateur");
 		label.setLayout(null);
 		label.setFont(new Font("Arial", Font.BOLD, 20));
-		label.setBounds(25, 0, 300, 40);
+		label.setBounds(25, 0, 400, 40);
 		this.add(label);
 
 		textLabel1 = new JLabel("Nom", SwingConstants.CENTER);
 		textLabel1.setLayout(null);
 		textLabel1.setFont(new Font("Arial", Font.BOLD, 20));
-		textLabel1.setBounds(appInterface.windowsSizeX - 800, appInterface.windowsSizeY - 750, 300, 50);
+		textLabel1.setBounds(appInterface.windowsSizeX - 800, appInterface.windowsSizeY - 650, 300, 50);
 		textLabel1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 		textLabel1.setBackground(Color.LIGHT_GRAY);
 		textLabel1.setOpaque(true);
@@ -60,7 +60,7 @@ public class AjouterUtilisateurPanel extends JPanel implements ActionListener {
 		textZone1 = new JTextField();
 		textZone1.setFont(new Font("Arial", Font.BOLD, 20));
 		textZone1.setLayout(null);
-		textZone1.setBounds(appInterface.windowsSizeX - 500, appInterface.windowsSizeY - 750, 300, 50);
+		textZone1.setBounds(appInterface.windowsSizeX - 500, appInterface.windowsSizeY - 650, 300, 50);
 		this.add(textZone1);
 		textZone1.setHorizontalAlignment(JTextField.CENTER);
 

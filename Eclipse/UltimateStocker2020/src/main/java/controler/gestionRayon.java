@@ -34,6 +34,10 @@ public class gestionRayon {
 		}
 	}
 	
+	public static int nombreRayon() {
+		return getRayon().size();
+	}
+	
 	public static void supprimerRayon(int codeRayon) {
 		RayonDAO.supprimerRayon(RayonDAO.rechercheRayonById(codeRayon));
 	}

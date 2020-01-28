@@ -53,7 +53,7 @@ public class AffichageProduitPanel extends JPanel implements ActionListener {
 		this.add(label);
 
 		addButton = new JButton("Ajouter");
-		addButton.setBounds(appInterface.windowsSizeX - 225, 150, 175, 50);
+		addButton.setBounds(appInterface.windowsSizeX - 225, appInterface.windowsSizeY - 500, 175, 50);
 		addButton.setFont(new Font("Arial", Font.BOLD, 20));
 		addButton.setForeground(Color.BLACK);
 		addButton.setBackground(Color.LIGHT_GRAY);
@@ -87,7 +87,7 @@ public class AffichageProduitPanel extends JPanel implements ActionListener {
 		sorter = new TableRowSorter<myTableProduitManagement>(tablemodel);
 
 		suppressButton = new JButton("Supprimer");
-		suppressButton.setBounds(appInterface.windowsSizeX - 225, 225, 175, 50);
+		suppressButton.setBounds(appInterface.windowsSizeX - 225, appInterface.windowsSizeY - 425, 175, 50);
 		suppressButton.setFont(new Font("Arial", Font.BOLD, 20));
 		suppressButton.setForeground(Color.BLACK);
 		suppressButton.setBackground(Color.LIGHT_GRAY);
@@ -101,23 +101,6 @@ public class AffichageProduitPanel extends JPanel implements ActionListener {
 		}
 		else {
 			suppressButton.setVisible(false);
-		}
-
-		modifier = new JButton("Modifier");
-		modifier.setBounds(appInterface.windowsSizeX - 225, appInterface.windowsSizeY - 250, 175, 50);
-		modifier.setFont(new Font("Arial", Font.BOLD, 20));
-		modifier.setForeground(Color.BLACK);
-		modifier.setBackground(Color.LIGHT_GRAY);
-		this.add(modifier);
-		modifier.addActionListener(this);
-		if(isChefMagasin) {
-			modifier.setVisible(true);
-		}
-		else if (gestionUtilisateur.getRayonChefRayon(idUser) == idRayon){
-			modifier.setVisible(true);
-		}
-		else {
-			modifier.setVisible(false);
 		}
 		
 		changerMotDePasse = new JButton("Changer Mot de Passe");
@@ -137,7 +120,7 @@ public class AffichageProduitPanel extends JPanel implements ActionListener {
 		ouvrir.addActionListener(this);
 		
 		retour = new JButton("retour");
-		retour.setBounds(appInterface.windowsSizeX - 225, 50, 175, 50);
+		retour.setBounds(125, appInterface.windowsSizeY - 125, 175, 50);
 		retour.setFont(new Font("Arial", Font.BOLD, 20));
 		retour.setForeground(Color.BLACK);
 		retour.setBackground(Color.LIGHT_GRAY);

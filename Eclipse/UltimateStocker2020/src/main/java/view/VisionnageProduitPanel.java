@@ -48,7 +48,7 @@ public class VisionnageProduitPanel extends JPanel implements ActionListener {
 		textLabel1 = new JLabel("id du produit : " + idProduit, SwingConstants.CENTER);
 		textLabel1.setLayout(null);
 		textLabel1.setFont(new Font("Arial", Font.BOLD, 20));
-		textLabel1.setBounds(appInterface.windowsSizeX - 800, appInterface.windowsSizeY - 750, 300, 50);
+		textLabel1.setBounds(appInterface.windowsSizeX - 800, appInterface.windowsSizeY - 700, 300, 50);
 		textLabel1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 		textLabel1.setBackground(Color.LIGHT_GRAY);
 		textLabel1.setOpaque(true);
@@ -57,7 +57,7 @@ public class VisionnageProduitPanel extends JPanel implements ActionListener {
 		textLabel2 = new JLabel("Description du produit : " + gestionProduit.getDescription(idProduit), SwingConstants.CENTER);
 		textLabel2.setLayout(null);
 		textLabel2.setFont(new Font("Arial", Font.BOLD, 20));
-		textLabel2.setBounds(appInterface.windowsSizeX - 800, appInterface.windowsSizeY - 550, 300, 50);
+		textLabel2.setBounds(appInterface.windowsSizeX - 800, appInterface.windowsSizeY - 625, 750, 200);
 		textLabel2.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 		textLabel2.setBackground(Color.LIGHT_GRAY);
 		textLabel2.setOpaque(true);
@@ -66,7 +66,7 @@ public class VisionnageProduitPanel extends JPanel implements ActionListener {
 		textLabel3 = new JLabel("Prix du produit :" + gestionProduit.getPrix(idProduit), SwingConstants.CENTER);
 		textLabel3.setLayout(null);
 		textLabel3.setFont(new Font("Arial", Font.BOLD, 20));
-		textLabel3.setBounds(appInterface.windowsSizeX - 800, appInterface.windowsSizeY - 450, 300, 50);
+		textLabel3.setBounds(appInterface.windowsSizeX - 800, appInterface.windowsSizeY - 400, 300, 50);
 		textLabel3.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 		textLabel3.setBackground(Color.LIGHT_GRAY);
 		textLabel3.setOpaque(true);
@@ -75,7 +75,7 @@ public class VisionnageProduitPanel extends JPanel implements ActionListener {
 		textLabel4 = new JLabel("Quantite de produit :" + gestionProduit.getQuantite(idProduit), SwingConstants.CENTER);
 		textLabel4.setLayout(null);
 		textLabel4.setFont(new Font("Arial", Font.BOLD, 20));
-		textLabel4.setBounds(appInterface.windowsSizeX - 800, appInterface.windowsSizeY - 350, 300, 50);
+		textLabel4.setBounds(appInterface.windowsSizeX - 800, appInterface.windowsSizeY - 325, 300, 50);
 		textLabel4.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 		textLabel4.setBackground(Color.LIGHT_GRAY);
 		textLabel4.setOpaque(true);

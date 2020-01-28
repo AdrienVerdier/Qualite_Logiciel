@@ -51,7 +51,7 @@ public class AjouterProduitPanel extends JPanel implements ActionListener {
 		textLabel1 = new JLabel("Description", SwingConstants.CENTER);
 		textLabel1.setLayout(null);
 		textLabel1.setFont(new Font("Arial", Font.BOLD, 20));
-		textLabel1.setBounds(appInterface.windowsSizeX - 800, appInterface.windowsSizeY - 750, 300, 50);
+		textLabel1.setBounds(appInterface.windowsSizeX - 800, appInterface.windowsSizeY - 700, 300, 50);
 		textLabel1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 		textLabel1.setBackground(Color.LIGHT_GRAY);
 		textLabel1.setOpaque(true);
@@ -60,14 +60,14 @@ public class AjouterProduitPanel extends JPanel implements ActionListener {
 		textZone1 = new JTextField();
 		textZone1.setFont(new Font("Arial", Font.BOLD, 20));
 		textZone1.setLayout(null);
-		textZone1.setBounds(appInterface.windowsSizeX - 500, appInterface.windowsSizeY - 750, 300, 50);
+		textZone1.setBounds(appInterface.windowsSizeX - 500, appInterface.windowsSizeY - 700, 300, 50);
 		this.add(textZone1);
 		textZone1.setHorizontalAlignment(JTextField.CENTER);
 
 		textLabel2 = new JLabel("Prix", SwingConstants.CENTER);
 		textLabel2.setLayout(null);
 		textLabel2.setFont(new Font("Arial", Font.BOLD, 20));
-		textLabel2.setBounds(appInterface.windowsSizeX - 800, appInterface.windowsSizeY - 550, 300, 50);
+		textLabel2.setBounds(appInterface.windowsSizeX - 800, appInterface.windowsSizeY - 600, 300, 50);
 		textLabel2.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 		textLabel2.setBackground(Color.LIGHT_GRAY);
 		textLabel2.setOpaque(true);
@@ -76,14 +76,14 @@ public class AjouterProduitPanel extends JPanel implements ActionListener {
 		textZone2 = new JTextField();
 		textZone2.setFont(new Font("Arial", Font.BOLD, 20));
 		textZone2.setLayout(null);
-		textZone2.setBounds(appInterface.windowsSizeX - 500, appInterface.windowsSizeY - 550, 300, 50);
+		textZone2.setBounds(appInterface.windowsSizeX - 500, appInterface.windowsSizeY - 600, 300, 50);
 		textZone2.setHorizontalAlignment(JTextField.CENTER);
 		this.add(textZone2);
 
 		textLabel3 = new JLabel("Quantite", SwingConstants.CENTER);
 		textLabel3.setLayout(null);
 		textLabel3.setFont(new Font("Arial", Font.BOLD, 20));
-		textLabel3.setBounds(appInterface.windowsSizeX - 800, appInterface.windowsSizeY - 450, 300, 50);
+		textLabel3.setBounds(appInterface.windowsSizeX - 800, appInterface.windowsSizeY - 500, 300, 50);
 		textLabel3.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 		textLabel3.setBackground(Color.LIGHT_GRAY);
 		textLabel3.setOpaque(true);
@@ -92,7 +92,7 @@ public class AjouterProduitPanel extends JPanel implements ActionListener {
 		textZone3 = new JTextField();
 		textZone3.setFont(new Font("Arial", Font.BOLD, 20));
 		textZone3.setLayout(null);
-		textZone3.setBounds(appInterface.windowsSizeX - 500, appInterface.windowsSizeY - 450, 300, 50);
+		textZone3.setBounds(appInterface.windowsSizeX - 500, appInterface.windowsSizeY - 500, 300, 50);
 		textZone3.setHorizontalAlignment(JTextField.CENTER);
 		this.add(textZone3);
 
@@ -146,7 +146,21 @@ public class AjouterProduitPanel extends JPanel implements ActionListener {
 			} else
 				validateLabel.setText("");
 
-			if (!(textZone1.getText().equals("")) && (!(textZone2.getText().equals(""))) && (!(textZone3.getText().equals("")))) {
+			if(Integer.parseInt(textZone2.getText()) < 0 || Integer.parseInt(textZone3.getText()) < 0) {
+				if (textZone2.getText().equals(""))
+					textZone2.setBorder(new LineBorder(Color.red, 1));
+				else
+					textZone2.setBorder(new LineBorder(Color.GRAY, 1));
+				
+				if (textZone3.getText().equals(""))
+					textZone3.setBorder(new LineBorder(Color.red, 1));
+				else
+					textZone3.setBorder(new LineBorder(Color.GRAY, 1));
+				
+				validateLabel.setText("La quantite et/ou le prix ne peut pas être négatif");
+				validateLabel.setForeground(Color.red.darker());
+			}
+			else if (!(textZone1.getText().equals("")) && (!(textZone2.getText().equals(""))) && (!(textZone3.getText().equals("")))) {
 				validateLabel.setText("La scène a été ajouté");
 				validateLabel.setForeground(Color.green.darker());
 

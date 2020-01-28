@@ -51,7 +51,7 @@ public class AffichageRayon extends JPanel implements ActionListener{
 		this.add(label);
 
 		addButton = new JButton("Ajouter");
-		addButton.setBounds(appInterface.windowsSizeX - 225, 150, 175, 50);
+		addButton.setBounds(appInterface.windowsSizeX - 225, appInterface.windowsSizeY - 500, 175, 50);
 		addButton.setFont(new Font("Arial", Font.BOLD, 20));
 		addButton.setForeground(Color.BLACK);
 		addButton.setBackground(Color.LIGHT_GRAY);
@@ -76,7 +76,7 @@ public class AffichageRayon extends JPanel implements ActionListener{
 		sorter = new TableRowSorter<myTableRayonManagement>(tablemodel);
 
 		suppressButton = new JButton("Supprimer");
-		suppressButton.setBounds(appInterface.windowsSizeX - 225, 225, 175, 50);
+		suppressButton.setBounds(appInterface.windowsSizeX - 225, appInterface.windowsSizeY - 425, 175, 50);
 		suppressButton.setFont(new Font("Arial", Font.BOLD, 20));
 		suppressButton.setForeground(Color.BLACK);
 		suppressButton.setBackground(Color.LIGHT_GRAY);
@@ -84,7 +84,7 @@ public class AffichageRayon extends JPanel implements ActionListener{
 		suppressButton.addActionListener(this);
 
 		modifier = new JButton("Modifier");
-		modifier.setBounds(appInterface.windowsSizeX - 225, appInterface.windowsSizeY - 250, 175, 50);
+		modifier.setBounds(appInterface.windowsSizeX - 225, appInterface.windowsSizeY - 350, 175, 50);
 		modifier.setFont(new Font("Arial", Font.BOLD, 20));
 		modifier.setForeground(Color.BLACK);
 		modifier.setBackground(Color.LIGHT_GRAY);
@@ -108,7 +108,7 @@ public class AffichageRayon extends JPanel implements ActionListener{
 		ouvrir.addActionListener(this);
 		
 		gestionDesUtilisateurs = new JButton("Gestion des utilisateurs");
-		gestionDesUtilisateurs.setBounds(appInterface.windowsSizeX - 225, 50, 175, 50);
+		gestionDesUtilisateurs.setBounds(75, 75, 300, 50);
 		gestionDesUtilisateurs.setFont(new Font("Arial", Font.BOLD, 20));
 		gestionDesUtilisateurs.setForeground(Color.BLACK);
 		gestionDesUtilisateurs.setBackground(Color.LIGHT_GRAY);
@@ -147,13 +147,20 @@ public class AffichageRayon extends JPanel implements ActionListener{
 		}
 
 		if (e.getSource() == suppressButton) {
-			if (table.getSelectedRow() != -1) {
-				int retour = JOptionPane.showConfirmDialog(this,
-						"Êtes-vous sûr de vouloir supprimer ce rayon",
-						"CONFIRM", JOptionPane.YES_NO_OPTION);
+			if(isChefMagasin) {
+				if (table.getSelectedRow() != -1) {
+					int retour = JOptionPane.showConfirmDialog(this,
+							"Êtes-vous sûr de vouloir supprimer ce rayon",
+							"CONFIRM", JOptionPane.YES_NO_OPTION);
 
-				if (retour == JOptionPane.OK_OPTION)
-					tablemodel.removeRow(table.getSelectedRow());
+					if (retour == JOptionPane.OK_OPTION)
+						tablemodel.removeRow(table.getSelectedRow());
+				}
+			}
+			else {
+				int retour = JOptionPane.showConfirmDialog(this,
+						"Seul le chef de magasin peut ajouter des rayons",
+						"CONFIRM", JOptionPane.YES_OPTION);
 			}
 		}
 		
