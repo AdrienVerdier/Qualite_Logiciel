@@ -1,17 +1,27 @@
-package main;
+package testDAO;
+
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+
+import org.junit.*;
 
 import controler.ChefMagasinDAO;
 import controler.ChefRayonDAO;
 import controler.Connexion;
 import controler.ProduitDAO;
 import controler.RayonDAO;
-import model.*;
+import model.ChefMagasin;
+import model.ChefRayon;
+import model.Produit;
+import model.Rayon;
 
-public class MainCreation {
+public class TestDAO {
 
-	public static void main(String[] args) {
-		Connexion.init();
-		
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+		Connexion.test();
+	
 		ChefMagasin ChefMagasin1 = new ChefMagasin(1,"nom","prenom","password",null,null);
 		
 		Rayon Rayon1 = new Rayon(1,"Rayon1",null,null,ChefMagasin1);
@@ -76,6 +86,35 @@ public class MainCreation {
 
 		ChefMagasin ChefMagasin2 = new ChefMagasin(1,"Verdier","Adrien","password",null,null);
 		ChefMagasinDAO.modifierChefMagasin(1,ChefMagasin2);
+	}
+
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+		ArrayList<Rayon> ListRayon = RayonDAO.returnAllRayon();
+		for (int i=0; i<ListRayon.size();i++)
+		{
+			RayonDAO.supprimerRayon(ListRayon.get(i));
+		}
+		ChefMagasin ChefMagasin1 = ChefMagasinDAO.rechercheChefMagasinById(1);
+		ChefMagasinDAO.supprimerChefMagasin(ChefMagasin1);
+	}
+	
+	@Test
+	public void test_suppression_en_cascade() {
+		Rayon Rayon1 = RayonDAO.rechercheRayonById(1);
+		RayonDAO.supprimerRayon(Rayon1);
+		ArrayList<Rayon> ListRayon = RayonDAO.returnAllRayon();
+		assertEquals("Le liste des rayons ne contient pas que 2 rayons",ListRayon.size(),2);
+		assertEquals("Le premier rayon n'est pas le rayon2",ListRayon.get(0).getIDRayon(),2);
+		assertEquals("Le deuxième rayon n'est pas le rayon3",ListRayon.get(1).getIDRayon(),3);
+		Produit Produit1 = ProduitDAO.rechercheProduitById(1);
+		Produit Produit2 = ProduitDAO.rechercheProduitById(2);
+		assertEquals("Le produit 1 n'existe plus dans la base de données",Produit1,null);
+		assertEquals("Le produit 2 n'existe plus dans la base de données",Produit2,null);
+		ChefRayon ChefRayon1 = ChefRayonDAO.rechercheChefRayonById(1);
+		ChefRayon ChefRayon2 = ChefRayonDAO.rechercheChefRayonById(2);
+		assertEquals("Le ChefRayon 1 n'existe plus dans la base de données",ChefRayon1,null);
+		assertEquals("Le ChefRayon 2 n'existe plus dans la base de données",ChefRayon2,null);
 	}
 
 }

@@ -8,6 +8,7 @@ import org.junit.runners.Suite;
 	TestChefRayonDAO.class, 
 	TestProduitDAO.class, 
 	TestRayonDAO.class, 
+	TestDAO.class, 
 })
-public class test {
+public class All_DAO_test {
 }
