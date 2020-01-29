@@ -18,6 +18,12 @@ public class Connexion {
 		emf = Persistence.createEntityManagerFactory("modification");
 		em = emf.createEntityManager();
 	}
+	
+	public static void test()
+	{
+		emf = Persistence.createEntityManagerFactory("test");
+		em = emf.createEntityManager();
+	}
 
 	static public EntityManager getEM() {
 		return em;

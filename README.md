@@ -3,6 +3,7 @@
 
 Pour ce projet, nous avons utilisé hibernate afin de gérer la base de données sur wampserver.
 Pour cela vous devez créer la base de données projetqualitelogiciel en amount sur wampserver. 
+Pour faire fonctionner les tests, vous devez créer la base de données test_projetqualitelogiciel
 
 Pour créer la base de données, lancer wamp, clique gauche sur son icône, onglet phpmyadmin.
 Puis connecter vous avec l'utilisateur root sans mot de passe.

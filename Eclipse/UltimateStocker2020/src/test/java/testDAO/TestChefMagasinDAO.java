@@ -16,7 +16,7 @@ public class TestChefMagasinDAO {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		Connexion.init();
+		Connexion.test();
 	}
 
 	@Before
@@ -47,6 +47,8 @@ public class TestChefMagasinDAO {
 		assertEquals("ChefMagasin2 et 3 n'ont pas la même liste de chef de rayon", ChefMagasin2.getListChefRayon(),
 				ChefMagasin3.getListChefRayon());
 		ChefMagasinDAO.supprimerChefMagasin(ChefMagasin3);
+		ChefMagasin ChefMagasin4 = ChefMagasinDAO.rechercheChefMagasinById(2);
+		assertEquals("Le chef magasin n'a pas été supprimé",ChefMagasin4,null);
 	}
 
 	@Test

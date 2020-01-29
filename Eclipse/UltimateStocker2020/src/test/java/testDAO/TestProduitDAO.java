@@ -17,7 +17,7 @@ public class TestProduitDAO {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		Connexion.init();
+		Connexion.test();
 	}
 
 	@Before
@@ -44,6 +44,8 @@ public class TestProduitDAO {
 				Produit3.getDescription());
 		assertEquals("Produit2 et 3 n'ont pas le même rayon", Produit2.getIDRayon(), Produit3.getIDRayon());
 		ProduitDAO.supprimerProduit(Produit2);
+		Produit Produit4 = ProduitDAO.rechercheProduitById(2);
+		assertEquals("Le produit n'a pas été supprimé",Produit4,null);
 	}
 
 	@Test
