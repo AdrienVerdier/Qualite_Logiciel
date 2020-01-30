@@ -51,17 +51,19 @@ public class TestRayonDAO {
 				Rayon3.getIDChefMagasin());
 		RayonDAO.supprimerRayon(Rayon2);
 		Rayon Rayon4 = RayonDAO.rechercheRayonById(2);
-		assertEquals("Le rayon n'a pas été supprimé",Rayon4,null);
+		assertEquals("Le rayon n'a pas été supprimé", Rayon4, null);
 	}
 
 	@Test
 	public void test_ajouterRayonProduit() {
 		Rayon Rayon1 = RayonDAO.rechercheRayonById(1);
-		Produit Produit1 = new Produit(1, 10, 10, "descriptionProduit1", Rayon1);
+		Produit Produit1 = new Produit(1, "Produit1", 10, 10, "descriptionProduit1", Rayon1);
 		RayonDAO.ajouterRayonProduit(Rayon1, Produit1);
 		ProduitDAO.ajouterProduit(Produit1);
 		assertEquals("Produit1 et le Produit de la liste n'ont pas le même id", Produit1.getIDProduit(),
 				Rayon1.getListProduit().get(0).getIDProduit());
+		assertEquals("Produit1 et le Produit de la liste n'ont pas le même nom", Produit1.getNom(),
+				Rayon1.getListProduit().get(0).getNom());
 		assertEquals("Produit1 et le Produit de la liste n'ont pas le même prix", Produit1.getPrix(),
 				Rayon1.getListProduit().get(0).getPrix());
 		assertEquals("Produit1 et le Produit de la liste n'ont pas la même quantité", Produit1.getQuantite(),

@@ -22,7 +22,7 @@ public class TestProduitDAO {
 
 	@Before
 	public void setUp() throws Exception {
-		Produit Produit1 = new Produit(1, 10, 10, "descriptionProduit1", null);
+		Produit Produit1 = new Produit(1, "Produit1", 10, 10, "descriptionProduit1", null);
 		ProduitDAO.ajouterProduit(Produit1);
 	}
 
@@ -34,10 +34,11 @@ public class TestProduitDAO {
 
 	@Test
 	public void test_ajouterProduit_et_rechercheProduitById_et_supprimerProduit() {
-		Produit Produit2 = new Produit(2, 100, 100, "descriptionProduit2", null);
+		Produit Produit2 = new Produit(2, "Produit2", 100, 100, "descriptionProduit2", null);
 		ProduitDAO.ajouterProduit(Produit2);
 		Produit Produit3 = ProduitDAO.rechercheProduitById(2);
 		assertEquals("Produit2 et 3 n'ont pas le même id", Produit2.getIDProduit(), Produit3.getIDProduit());
+		assertEquals("Produit2 et 3 n'ont pas le même nom", Produit2.getNom(), Produit3.getNom());
 		assertEquals("Produit2 et 3 n'ont pas le même prix", Produit2.getPrix(), Produit3.getPrix());
 		assertEquals("Produit2 et 3 n'ont pas la même quantité", Produit2.getQuantite(), Produit3.getQuantite());
 		assertEquals("Produit2 et 3 n'ont pas la même description", Produit2.getDescription(),
@@ -45,14 +46,15 @@ public class TestProduitDAO {
 		assertEquals("Produit2 et 3 n'ont pas le même rayon", Produit2.getIDRayon(), Produit3.getIDRayon());
 		ProduitDAO.supprimerProduit(Produit2);
 		Produit Produit4 = ProduitDAO.rechercheProduitById(2);
-		assertEquals("Le produit n'a pas été supprimé",Produit4,null);
+		assertEquals("Le produit n'a pas été supprimé", Produit4, null);
 	}
 
 	@Test
 	public void test_modifierProduit() {
 		Produit Produit1 = ProduitDAO.rechercheProduitById(1);
-		Produit Produit2 = new Produit(1, 100, 100, "descriptionProduit2", null);
+		Produit Produit2 = new Produit(1, "Produit2", 100, 100, "descriptionProduit2", null);
 		ProduitDAO.modifierProduit(1, Produit2);
+		assertEquals("Produit1 et 2 n'ont pas le même nom", Produit1.getNom(), Produit2.getNom());
 		assertEquals("Produit1 et 2 n'ont pas le même prix", Produit1.getPrix(), Produit2.getPrix());
 		assertEquals("Produit1 et 2 n'ont pas la même quantité", Produit1.getQuantite(), Produit2.getQuantite());
 		assertEquals("Produit1 et 2 n'ont pas la même description", Produit1.getDescription(),
@@ -66,6 +68,8 @@ public class TestProduitDAO {
 		assertEquals("La liste n'a pas la bonne taille", 1, ListProduit.size());
 		assertEquals("Produit1 et le Produit de la liste n'ont pas le même id", Produit1.getIDProduit(),
 				ListProduit.get(0).getIDProduit());
+		assertEquals("Produit1 et le Produit de la liste n'ont pas le même nom", Produit1.getNom(),
+				ListProduit.get(0).getNom());
 		assertEquals("Produit1 et le Produit de la liste n'ont pas le même prix", Produit1.getPrix(),
 				ListProduit.get(0).getPrix());
 		assertEquals("Produit1 et le Produit de la liste n'ont pas la même quantité", Produit1.getQuantite(),
@@ -74,13 +78,13 @@ public class TestProduitDAO {
 				ListProduit.get(0).getDescription());
 		assertEquals("Produit1 et le Produit de la liste n'ont pas le même rayon", Produit1.getIDRayon(),
 				ListProduit.get(0).getIDRayon());
-		
-		Produit Produit2 = new Produit(2, 100, 100, "descriptionProduit2", null);
+
+		Produit Produit2 = new Produit(2, "Produit2", 100, 100, "descriptionProduit2", null);
 		ProduitDAO.ajouterProduit(Produit2);
 		ListProduit = ProduitDAO.returnAllProduit();
 		assertEquals("La liste n'a pas la bonne taille", 2, ListProduit.size());
 
-		Produit Produit3 = new Produit(3, 50, 30, "descriptionProduit3", null);
+		Produit Produit3 = new Produit(3, "Produit3", 50, 30, "descriptionProduit3", null);
 		ProduitDAO.ajouterProduit(Produit3);
 		ListProduit = ProduitDAO.returnAllProduit();
 		assertEquals("La liste n'a pas la bonne taille", 3, ListProduit.size());
@@ -94,12 +98,12 @@ public class TestProduitDAO {
 		int MaxIDProduit = ProduitDAO.returnMaxIDProduit();
 		assertEquals("L'id renvoyé n'est pas bon", 2, MaxIDProduit);
 
-		Produit Produit2 = new Produit(2, 100, 100, "descriptionProduit2", null);
+		Produit Produit2 = new Produit(2, "Produit2", 100, 100, "descriptionProduit2", null);
 		ProduitDAO.ajouterProduit(Produit2);
 		MaxIDProduit = ProduitDAO.returnMaxIDProduit();
 		assertEquals("L'id renvoyé n'est pas bon", 3, MaxIDProduit);
 
-		Produit Produit3 = new Produit(3, 50, 30, "descriptionProduit3", null);
+		Produit Produit3 = new Produit(3, "Produit3", 50, 30, "descriptionProduit3", null);
 		ProduitDAO.ajouterProduit(Produit3);
 		MaxIDProduit = ProduitDAO.returnMaxIDProduit();
 		assertEquals("L'id renvoyé n'est pas bon", 4, MaxIDProduit);

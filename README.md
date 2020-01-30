@@ -10,6 +10,7 @@ Puis connecter vous avec l'utilisateur root sans mot de passe.
 Cliquer sur le bouton créer Nouvelle base de données et rentrer : projetqualitelogiciel.
 
 Puis vous pouvez lancer l'application :
- - Tout d'abord vous devez lancer le .. qui va créer la base de données et placer quelques données pour commencer son utilisation.
- - Puis vous devez lancer ... qui va lancer l'interface pour accéder à la base de données et effectuer des modifications. Ces modifications
-sont enregistrées dans la base de données et pourront être récupérer au prochain lancement de l'application.
+ - Tout d'abord vous devez lancer le .jar CreationBDD qui va créer la base de données et placer quelques données pour commencer son utilisation.
+ - Puis vous pouver lancer UtilisationBDD qui va lancer l'interface pour accéder à la base de données et vous permettre 
+d'effectuer des modifications. Ces modificationssont enregistrées dans la base de données et pourront être récupérer au 
+prochain lancement de l'application.

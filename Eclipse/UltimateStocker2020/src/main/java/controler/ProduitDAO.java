@@ -55,6 +55,7 @@ public class ProduitDAO {
 	public static void modifierProduit(int IDProduit, Produit Produit) {
 		Connexion.getEM().getTransaction().begin();
 		Produit NouveauProduit = Connexion.getEM().find(Produit.class, IDProduit);
+		NouveauProduit.setNom(Produit.getNom());
 		NouveauProduit.setDescription(Produit.getDescription());
 		NouveauProduit.setPrix(Produit.getPrix());
 		NouveauProduit.setQuantite(Produit.getQuantite());

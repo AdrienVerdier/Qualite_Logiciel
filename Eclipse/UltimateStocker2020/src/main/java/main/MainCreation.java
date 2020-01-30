@@ -23,15 +23,15 @@ public class MainCreation {
 		ChefRayon ChefRayon3 = new ChefRayon(3,"nom3","prenom3","password3",ChefMagasin1,Rayon3);
 		ChefRayon ChefRayon4 = new ChefRayon(4,"nom4","prenom4","password4",ChefMagasin1,Rayon3);
 		
-		Produit Produit1 = new Produit(1,10,10,"descriptionProduit1",Rayon1);
-		Produit Produit2 = new Produit(2,100,0,"descriptionProduit2",Rayon1);
-		Produit Produit3 = new Produit(3,50,5,"descriptionProduit3",Rayon2);
-		Produit Produit4 = new Produit(4,3,150,"descriptionProduit4",Rayon2);
-		Produit Produit5 = new Produit(5,5,7,"descriptionProduit5",Rayon2);
-		Produit Produit6 = new Produit(6,11,60,"descriptionProduit6",Rayon2);
-		Produit Produit7 = new Produit(7,13,30,"descriptionProduit7",Rayon3);
-		Produit Produit8 = new Produit(8,47,23,"descriptionProduit8",Rayon3);
-		Produit Produit9 = new Produit(9,33,12,"descriptionProduit9",Rayon3);
+		Produit Produit1 = new Produit(1,"Produit1",10,10,"descriptionProduit1",Rayon1);
+		Produit Produit2 = new Produit(2,"Produit2",100,0,"descriptionProduit2",Rayon1);
+		Produit Produit3 = new Produit(3,"Produit3",50,5,"descriptionProduit3",Rayon2);
+		Produit Produit4 = new Produit(4,"Produit4",3,150,"descriptionProduit4",Rayon2);
+		Produit Produit5 = new Produit(5,"Produit5",5,7,"descriptionProduit5",Rayon2);
+		Produit Produit6 = new Produit(6,"Produit6",11,60,"descriptionProduit6",Rayon2);
+		Produit Produit7 = new Produit(7,"Produit7",13,30,"descriptionProduit7",Rayon3);
+		Produit Produit8 = new Produit(8,"Produit8",47,23,"descriptionProduit8",Rayon3);
+		Produit Produit9 = new Produit(9,"Produit9",33,12,"descriptionProduit9",Rayon3);
 		
 		ChefMagasinDAO.ajouterChefMagasin(ChefMagasin1);
 
