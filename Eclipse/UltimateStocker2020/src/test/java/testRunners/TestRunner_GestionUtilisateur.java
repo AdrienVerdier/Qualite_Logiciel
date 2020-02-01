@@ -55,7 +55,7 @@ public class TestRunner_GestionUtilisateur {
 
 	}
 
-	@Given("un chef de magasin connecte à l'application pour le second test de GestionUtilisateur")
+	@Given("un chef de magasin connecte a l'application pour le second test de GestionUtilisateur")
 	public void un_chef_de_magasin_connecte_a_l_application_pour_le_second_test() {
 
 		int retour = gestionUtilisateur.authentification(1, "password", true);
@@ -78,27 +78,5 @@ public class TestRunner_GestionUtilisateur {
 
 	}
 
-	@Given("un chef de magasin connecte à l'application pour le troisieme test de GestionUtilisateur")
-	public void un_chef_de_magasin_connecte_a_l_application_pour_le_troisieme_test() {
-
-		int retour = gestionUtilisateur.authentification(1, "password", true);
-		assertEquals("L'utilisateur n'est pas identifié", retour, 1);
-
-	}
-
-	@When("il supprime un utilisateur pour le troisieme test de GestionUtilisateur")
-	public void il_supprime_un_utilisateur() {
-
-		gestionUtilisateur.supprimerChefRayon(2);
-		assertEquals("L'utilisateur n'a pas été supprimé", null, ChefRayonDAO.rechercheChefRayonById(2));
-
-	}
-
-	@Then("L'utilisateur ne se trouve plus dans l'application pour le troisieme test de GestionUtilisateur")
-	public void l_utilisateur_ne_se_trouve_plus_dans_l_application() {
-
-		assertEquals("L'utilisateur n'a pas été supprimé", null, ChefRayonDAO.rechercheChefRayonById(2));
-
-	}
 
 }

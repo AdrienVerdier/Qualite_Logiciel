@@ -49,7 +49,7 @@ public class TestRunner_GestionRayonAdministrateur {
 
 	}
 
-	@Given("un chef de magasin connecte à l'application pour le second test de GestionRayonAdministrateur")
+	@Given("un chef de magasin connecte a l'application pour le second test de GestionRayonAdministrateur")
 	public void un_chef_de_magasin_connecte_a_l_application_pour_le_second_test() {
 
 		int retour = gestionUtilisateur.authentification(1, "password", true);
@@ -72,7 +72,7 @@ public class TestRunner_GestionRayonAdministrateur {
 
 	}
 
-	@Given("un chef de magasin connecte à l'application pour le troisieme test de GestionRayonAdministrateur")
+	@Given("un chef de magasin connecte a l'application pour le troisieme test de GestionRayonAdministrateur")
 	public void un_chef_de_magasin_connecte_a_l_application_pour_le_troisieme_test() {
 
 		int retour = gestionUtilisateur.authentification(1, "password", true);
@@ -83,15 +83,15 @@ public class TestRunner_GestionRayonAdministrateur {
 	@When("il supprime un rayon pour le troisieme test de GestionRayonAdministrateur")
 	public void il_supprime_un_rayon() {
 
-		gestionRayon.supprimerRayon(2);
-		assertEquals("le rayon n'est pas supprimé", null, RayonDAO.rechercheRayonById(2));
+		gestionRayon.supprimerRayon(1);
+		assertEquals("le rayon n'est pas supprimé", null, RayonDAO.rechercheRayonById(1));
 
 	}
 
 	@Then("Le rayon ne se trouve plus dans l'application pour le troisieme test de GestionRayonAdministrateur")
 	public void le_rayon_ne_se_trouve_plus_dans_l_application() {
 
-		assertEquals("le rayon n'est pas supprimé", null, RayonDAO.rechercheRayonById(2));
+		assertEquals("le rayon n'est pas supprimé", null, RayonDAO.rechercheRayonById(1));
 
 	}
 

@@ -12,13 +12,7 @@ Feature: Test classe GestionUtilisateur
     Then L'utilisateur se trouve dans l'application pour le premier test de GestionUtilisateur
 
   @tag2
-  Scenario Outline: Modification d'un utilisateur par un chef de magasin
+  Scenario: Modification d'un utilisateur par un chef de magasin
     Given un chef de magasin connecte a l'application pour le second test de GestionUtilisateur
     When Il modifie les information d'un utilisateur pour le second test de GestionUtilisateur
     Then L'utilisateur est modifie dans l'application pour le second test de GestionUtilisateur
-    
-	@tag3
-	Scenario Outline: Suppression d'un utilisateur par un chef de magasin
-		Given un chef de magasin connecte a l'application pour le troisieme test de GestionUtilisateur
-		When il supprime un utilisateur pour le troisieme test de GestionUtilisateur
-		Then L'utilisateur ne se trouve plus dans l'application pour le troisieme test de GestionUtilisateur

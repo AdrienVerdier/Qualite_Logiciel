@@ -15,6 +15,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import model.ChefMagasin;
 import model.ChefRayon;
+import model.Produit;
 import model.Rayon;
 
 public class TestRunner_GestionProduitAdministrateur {
@@ -31,6 +32,9 @@ public class TestRunner_GestionProduitAdministrateur {
 		ChefMagasinDAO.ajouterChefMagasinChefRayon(ChefMagasin1, ChefRayon1);
 		RayonDAO.ajouterRayonChefRayon(Rayon1, ChefRayon1);
 		ChefRayonDAO.ajouterChefRayon(ChefRayon1);
+		Produit Produit1 = new Produit(1,"Produit1",10,10,"descriptionProduit1",Rayon1);
+		RayonDAO.ajouterRayonProduit(Rayon1, Produit1);
+		ProduitDAO.ajouterProduit(Produit1);
 	}
 
 	@Given("un chef de magasin connecte a l'application pour le premier test de GestionProduitAdministrateur")
@@ -45,14 +49,14 @@ public class TestRunner_GestionProduitAdministrateur {
 	public void il_ajoute_un_produit_a_la_base_de_donnee() {
 
 		gestionProduit.ajouterProduit("vis", "vis crusciforme", 12, 123, 1);
-		assertEquals("Le produit n'a pas été ajouté", "vis", ProduitDAO.rechercheProduitById(1).getNom());
+		assertEquals("Le produit n'a pas été ajouté", "vis", ProduitDAO.rechercheProduitById(2).getNom());
 
 	}
 
 	@Then("Le produit se trouve dans l'application pour le premier test de GestionProduitAdministrateur")
 	public void le_produit_se_trouve_dans_l_application() {
 
-		assertEquals("Le produit n'a pas été ajouté", "vis", ProduitDAO.rechercheProduitById(1).getNom());
+		assertEquals("Le produit n'a pas été ajouté", "vis", ProduitDAO.rechercheProduitById(2).getNom());
 
 	}
 
@@ -76,29 +80,6 @@ public class TestRunner_GestionProduitAdministrateur {
 	public void le_produit_est_modifie_dans_l_application() {
 
 		assertEquals("Le produit n'a pas été modifié", "clou", ProduitDAO.rechercheProduitById(1).getNom());
-
-	}
-
-	@Given("un chef de magasin connecte a l'application pour le troisieme test de GestionProduitAdministrateur")
-	public void un_chef_de_magasin_connecte_a_l_application_pour_le_troisieme_test() {
-
-		int retour = gestionUtilisateur.authentification(1, "password", true);
-		assertEquals("L'utilisateur n'est pas identifié", retour, 1);
-
-	}
-
-	@When("il supprime un produit pour le troisième test de GestionProduitAdministrateur")
-	public void il_supprime_un_produit() {
-
-		gestionProduit.supprimerProduit(1);
-		assertEquals("Le produit n'a pas été effacé", null, ProduitDAO.rechercheProduitById(1));
-
-	}
-
-	@Then("Le produit ne se trouve plus dans l'application pour le troisieme test de GestionProduitAdministrateur")
-	public void le_produit_ne_se_trouve_plus_dans_l_application() {
-
-		assertEquals("Le produit n'a pas été effacé", null, ProduitDAO.rechercheProduitById(1));
 
 	}
 
