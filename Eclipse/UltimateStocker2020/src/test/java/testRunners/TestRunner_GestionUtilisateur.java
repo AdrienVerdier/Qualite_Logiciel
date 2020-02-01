@@ -44,8 +44,8 @@ public class TestRunner_GestionUtilisateur {
 		ChefRayonDAO.supprimerChefRayon(chefRayon1);
 	}
 	
-	@Given("un chef de magasin connecté à l'application")
-    public void un_chef_de_magasin_connecte_a_l_application() {
+	@Given("un chef de magasin connecte a l'application pour le premier test de GestionUtilisateur")
+    public void un_chef_de_magasin_connecte_a_l_application_pour_le_premier_test() {
         
 		int retour = gestionUtilisateur.authentification(1, "password", true);
 		assertEquals("L'utilisateur n'est pas identifié", retour,1);
@@ -53,7 +53,7 @@ public class TestRunner_GestionUtilisateur {
         throw new PendingException();
     }
 	 
-    @When("Il ajoute un utilisateur à la base de donnée")
+    @When("Il ajoute un utilisateur a la base de donnee pour le premier test de GestionUtilisateur")
     public void il_ajoute_un_utilisateur_a_la_base_de_donnee() {
         
     	gestionUtilisateur.ajouterChefRayon("pierre", "savary", "oui", 1, "Rayon1");
@@ -62,7 +62,7 @@ public class TestRunner_GestionUtilisateur {
         throw new PendingException();
     }
     
-    @Then("L'utilisateur se trouve dans l'application")
+    @Then("L'utilisateur se trouve dans l'application pour le premier test de GestionUtilisateur")
     public void l_utilisateur_se_trouve_dans_l_application() {
 
     	assertEquals("L'utilisateur ne s'est pas ajouté", "pierre", ChefRayonDAO.rechercheChefRayonById(2).getNom());
@@ -70,7 +70,16 @@ public class TestRunner_GestionUtilisateur {
         throw new PendingException();
     }
     
-    @When("Il modifie les information d'un utilisateur")
+    @Given("un chef de magasin connecte à l'application pour le second test de GestionUtilisateur")
+    public void un_chef_de_magasin_connecte_a_l_application_pour_le_second_test() {
+        
+		int retour = gestionUtilisateur.authentification(1, "password", true);
+		assertEquals("L'utilisateur n'est pas identifié", retour,1);
+		
+        throw new PendingException();
+    }
+    
+    @When("Il modifie les information d'un utilisateur pour le second test de GestionUtilisateur")
     public void il_modifie_les_information_d_un_utilisateur() {
         
     	gestionUtilisateur.modifierChefRayon(1, "bidule", "prenom1", "password1", 1, "Rayon1");
@@ -79,7 +88,7 @@ public class TestRunner_GestionUtilisateur {
         throw new PendingException();
     }
     
-    @Then("L'utilisateur est modifié dans l'application")
+    @Then("L'utilisateur est modifie dans l'application pour le second test de GestionUtilisateur")
     public void l_utilisateur_est_modifie_dans_l_application() {
 
     	assertEquals("L'utilisateur n'est pas modifié", "bidule", ChefRayonDAO.rechercheChefRayonById(1).getNom());
@@ -87,7 +96,16 @@ public class TestRunner_GestionUtilisateur {
         throw new PendingException();
     }
     
-    @When("il supprime un utilisateur")
+    @Given("un chef de magasin connecte à l'application pour le troisieme test de GestionUtilisateur")
+    public void un_chef_de_magasin_connecte_a_l_application_pour_le_troisieme_test() {
+        
+		int retour = gestionUtilisateur.authentification(1, "password", true);
+		assertEquals("L'utilisateur n'est pas identifié", retour,1);
+		
+        throw new PendingException();
+    }
+    
+    @When("il supprime un utilisateur pour le troisieme test de GestionUtilisateur")
     public void il_supprime_un_utilisateur() {
 
     	gestionUtilisateur.supprimerChefRayon(2);
@@ -96,7 +114,7 @@ public class TestRunner_GestionUtilisateur {
         throw new PendingException();
     }
     
-    @Then("L'utilisateur ne se trouve plus dans l'application")
+    @Then("L'utilisateur ne se trouve plus dans l'application pour le troisieme test de GestionUtilisateur")
     public void l_utilisateur_ne_se_trouve_plus_dans_l_application() {
 
     	assertEquals("L'utilisateur n'a pas été supprimé", null, ChefRayonDAO.rechercheChefRayonById(2));

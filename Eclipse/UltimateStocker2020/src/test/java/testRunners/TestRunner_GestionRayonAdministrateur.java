@@ -37,8 +37,8 @@ public class TestRunner_GestionRayonAdministrateur {
 		RayonDAO.supprimerRayon(rayon1);
 	}
 	
-	@Given("un chef de magasin connecté à l'application")
-    public void un_chef_de_magasin_connecte_a_l_application() {
+	@Given("un chef de magasin connecte a l'application pour le premier test de GestionRayonAdministrateur")
+    public void un_chef_de_magasin_connecte_a_l_application_pour_le_premier_test() {
         
 		int retour = gestionUtilisateur.authentification(1, "password", true);
 		assertEquals("L'utilisateur n'est pas identifié", retour,1);
@@ -46,7 +46,7 @@ public class TestRunner_GestionRayonAdministrateur {
         throw new PendingException();
     }
 	 
-    @When("Il ajoute un rayon à la base de donnée")
+    @When("Il ajoute un rayon a la base de donnee pour le premier test de GestionRayonAdministrateur")
     public void il_ajoute_un_rayon_a_la_base_de_donnee() {
 
     	gestionRayon.ajouterRayon("scie", 1);
@@ -55,7 +55,7 @@ public class TestRunner_GestionRayonAdministrateur {
         throw new PendingException();
     }
     
-    @Then("Le rayon se trouve dans l'application")
+    @Then("Le rayon se trouve dans l'application pour le premier test de GestionRayonAdministrateur")
     public void le_rayon_se_trouve_dans_l_application() {
 
     	assertEquals("Le rayon ne s'est pas ajouté", "scie", RayonDAO.rechercheRayonById(2).getNom());
@@ -63,7 +63,16 @@ public class TestRunner_GestionRayonAdministrateur {
         throw new PendingException();
     }
     
-    @When("Il modifie les information d'un rayon")
+    @Given("un chef de magasin connecte à l'application pour le second test de GestionRayonAdministrateur")
+    public void un_chef_de_magasin_connecte_a_l_application_pour_le_second_test() {
+        
+		int retour = gestionUtilisateur.authentification(1, "password", true);
+		assertEquals("L'utilisateur n'est pas identifié", retour,1);
+		
+        throw new PendingException();
+    }
+    
+    @When("Il modifie les information d'un rayon pour le second test de GestionRayonAdministrateur")
     public void il_modifie_les_information_d_un_rayon() {
         
     	gestionRayon.modifierRayon(1, "hache");
@@ -72,7 +81,7 @@ public class TestRunner_GestionRayonAdministrateur {
         throw new PendingException();
     }
     
-    @Then("Le rayon est modifié dans l'application")
+    @Then("Le rayon est modifie dans l'application pour le second test de GestionRayonAdministrateur")
     public void le_rayon_est_modifie_dans_l_application() {
 
     	assertEquals("Le rayon n'est pas modifié", "hache", RayonDAO.rechercheRayonById(1).getNom());
@@ -80,7 +89,16 @@ public class TestRunner_GestionRayonAdministrateur {
         throw new PendingException();
     }
     
-    @When("il supprime un rayon")
+    @Given("un chef de magasin connecte à l'application pour le troisieme test de GestionRayonAdministrateur")
+    public void un_chef_de_magasin_connecte_a_l_application_pour_le_troisieme_test() {
+        
+		int retour = gestionUtilisateur.authentification(1, "password", true);
+		assertEquals("L'utilisateur n'est pas identifié", retour,1);
+		
+        throw new PendingException();
+    }
+    
+    @When("il supprime un rayon pour le troisieme test de GestionRayonAdministrateur")
     public void il_supprime_un_rayon() {
 
     	gestionRayon.supprimerRayon(2);
@@ -89,7 +107,7 @@ public class TestRunner_GestionRayonAdministrateur {
         throw new PendingException();
     }
     
-    @Then("Le rayon ne se trouve plus dans l'application")
+    @Then("Le rayon ne se trouve plus dans l'application pour le troisieme test de GestionRayonAdministrateur")
     public void le_rayon_ne_se_trouve_plus_dans_l_application() {
 
     	assertEquals("le rayon n'est pas supprimé", null, RayonDAO.rechercheRayonById(2));
