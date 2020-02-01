@@ -8,15 +8,32 @@ import model.ChefMagasin;
 import model.ChefRayon;
 import model.Rayon;
 
+/**
+ * Cette classe représente l'ensemble des méthodes permettant la gestion des utilisateurs
+ * @author Pierre Savary & Adrien Verdier
+ *
+ */
 public class gestionUtilisateur {
+	
+	private gestionUtilisateur() {
+		
+	}
 
+	/**
+	 * Cette méthode permet d'ajouter un chef de rayon
+	 * @param nom le nom du chef de rayon à ajouter
+	 * @param prenom le prénom du chef de rayon à ajouter
+	 * @param motDePasse mot de passe du chef de rayon à ajouter
+	 * @param IDChefMagasin identifiant du chef de magasin associé
+	 * @param nomRayon le nom du rayon ou il travaille
+	 */
 	public static void ajouterChefRayon(String nom, String prenom, String motDePasse, int IDChefMagasin, String nomRayon) {		
 		Iterator<Rayon> iter = RayonDAO.returnAllRayon().iterator();
 		Rayon tmp;
 		Rayon rayon = new Rayon();
 		while(iter.hasNext()) {
 			tmp = iter.next();
-			if(tmp.getNom() == nomRayon) {
+			if(tmp.getNom().equals(nomRayon)) {
 				rayon = tmp;
 			}
 		}
@@ -26,13 +43,22 @@ public class gestionUtilisateur {
 		ChefRayonDAO.ajouterChefRayon(chefRayon);
 	}
 	
+	/**
+	 * Cette méthode permet de modifier un chef de rayon
+	 * @param idChefRayon identifiant du chef de rayon à modifier
+	 * @param nom nouveau nom du chef de rayon
+	 * @param prenom nouveau prénom du chef de rayon
+	 * @param motDePasse nouveau mot de passe du chef de rayon
+	 * @param IDChefMagasin identifiant du chef de magasin
+	 * @param nomRayon nom du rayon ou il travaille
+	 */
 	public static void modifierChefRayon(int idChefRayon, String nom, String prenom, String motDePasse, int IDChefMagasin, String nomRayon) {
 		Iterator<Rayon> iter = RayonDAO.returnAllRayon().iterator();
 		Rayon tmp;
 		Rayon rayon = new Rayon();
 		while(iter.hasNext()) {
 			tmp = iter.next();
-			if(tmp.getNom() == nomRayon) {
+			if(tmp.getNom().equals(nomRayon)) {
 				rayon = tmp;
 			}
 		}
@@ -57,6 +83,12 @@ public class gestionUtilisateur {
 		return ChefRayonDAO.returnAllChefRayon();			
 	}
 	
+	/**
+	 * Cette méthode permet de changer le mot de passe de l'utilisateur
+	 * @param IDChefRayon identifiant de l'utilisateur 
+	 * @param isChefMagasin booleen présentant si c'est un chef de magasin ou non
+	 * @param motDePasse nouveau mot de passe de l'utilisateur
+	 */
 	public static void changerMDP (int IDChefRayon, boolean isChefMagasin, String motDePasse) {
 		if(isChefMagasin) {
 			ChefMagasin chefMagasin = ChefMagasinDAO.rechercheChefMagasinById(IDChefRayon);
@@ -70,6 +102,13 @@ public class gestionUtilisateur {
 		}
 	}
 	
+	/**
+	 * Cette classe permet d'authentifier un utilisateur
+	 * @param idUser identifiant de l'utilisateur
+	 * @param password mot de passe de l'utilisateur
+	 * @param isChefMagasin booleen qui précise si c'est un chef de magasin
+	 * @return l'id si ok, -1 si pas bon
+	 */
 	public static int authentification (int idUser, String password, boolean isChefMagasin) {
 		if(isChefMagasin) {
 			ChefMagasin chefMagasin = ChefMagasinDAO.rechercheChefMagasinById(idUser);
@@ -92,4 +131,7 @@ public class gestionUtilisateur {
 		return chefRayon.getIDRayon().getIDRayon();
 	}
 	
+	public static ChefRayon getUtilisateur (int idUser) {
+		return ChefRayonDAO.rechercheChefRayonById(idUser);
+	}
 }

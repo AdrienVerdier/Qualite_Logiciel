@@ -9,6 +9,11 @@ import model.ChefRayon;
 import model.Rayon;
 
 public class ChefMagasinDAO {
+	
+	private ChefMagasinDAO () {
+		
+	}
+	
 	/**
 	 * Cette méthode ajoute un chef magasin à la base de données
 	 * 

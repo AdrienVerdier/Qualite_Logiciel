@@ -24,6 +24,11 @@ import controler.gestionRayon;
 import controler.gestionUtilisateur;
 import controler.myTableRayonManagement;
 
+/**
+ * Cette classe représente le panel qui va permettre de gérer les rayon
+ * @author Pierre Savary & Adrien Verdier
+ *
+ */
 public class AffichageRayon extends JPanel implements ActionListener{
 	
 	private static final long serialVersionUID = 12L;
@@ -32,10 +37,16 @@ public class AffichageRayon extends JPanel implements ActionListener{
 	private JTable table;
 	private myTableRayonManagement tablemodel;
 	private JLabel label;
-	private TableRowSorter<myTableRayonManagement> sorter;
+	private String police = "Arial";
 	private int idUser;
 	private boolean isChefMagasin;
 
+	/**
+	 * Cette méthode permet de créer tous les objets qui vont apparaître sur le panel
+	 * @param frame la frame dans laquelle doit s'afficher le panel
+	 * @param isChefMagasin booleen précisant si l'utilisateur connecté est un chef de magasin
+	 * @param idUser identifiant de l'utilisateur connecté
+	 */
 	public AffichageRayon(JFrame frame, boolean isChefMagasin ,int idUser) {
 		this.idUser = idUser;
 		this.isChefMagasin = isChefMagasin;
@@ -46,13 +57,13 @@ public class AffichageRayon extends JPanel implements ActionListener{
 
 		label = new JLabel("Choix du Rayon");
 		label.setLayout(null);
-		label.setFont(new Font("Arial", Font.BOLD, 20));
+		label.setFont(new Font(police, Font.BOLD, 20));
 		label.setBounds(25, 0, 250, 40);
 		this.add(label);
 
 		addButton = new JButton("Ajouter");
 		addButton.setBounds(appInterface.windowsSizeX - 225, appInterface.windowsSizeY - 500, 175, 50);
-		addButton.setFont(new Font("Arial", Font.BOLD, 20));
+		addButton.setFont(new Font(police, Font.BOLD, 20));
 		addButton.setForeground(Color.BLACK);
 		addButton.setBackground(Color.LIGHT_GRAY);
 		this.add(addButton);
@@ -67,17 +78,15 @@ public class AffichageRayon extends JPanel implements ActionListener{
 		table.getTableHeader().setFont(new Font("Arial", Font.BOLD, 13));
 		table.getTableHeader().setForeground(Color.blue);
 		table.getTableHeader().setBackground(new Color(51, 153, 255));
-		table.setFont(new Font("Arial", Font.BOLD, 13));
+		table.setFont(new Font(police, Font.BOLD, 13));
 		table.setAutoCreateRowSorter(true);
 		table.getTableHeader().setReorderingAllowed(false);
 		tableContainer.setBounds(50, 200, 700, 400);
 		this.add(tableContainer, BorderLayout.CENTER);
 
-		sorter = new TableRowSorter<myTableRayonManagement>(tablemodel);
-
 		suppressButton = new JButton("Supprimer");
 		suppressButton.setBounds(appInterface.windowsSizeX - 225, appInterface.windowsSizeY - 425, 175, 50);
-		suppressButton.setFont(new Font("Arial", Font.BOLD, 20));
+		suppressButton.setFont(new Font(police, Font.BOLD, 20));
 		suppressButton.setForeground(Color.BLACK);
 		suppressButton.setBackground(Color.LIGHT_GRAY);
 		this.add(suppressButton);
@@ -85,7 +94,7 @@ public class AffichageRayon extends JPanel implements ActionListener{
 
 		modifier = new JButton("Modifier");
 		modifier.setBounds(appInterface.windowsSizeX - 225, appInterface.windowsSizeY - 350, 175, 50);
-		modifier.setFont(new Font("Arial", Font.BOLD, 20));
+		modifier.setFont(new Font(police, Font.BOLD, 20));
 		modifier.setForeground(Color.BLACK);
 		modifier.setBackground(Color.LIGHT_GRAY);
 		this.add(modifier);
@@ -93,7 +102,7 @@ public class AffichageRayon extends JPanel implements ActionListener{
 		
 		changerMotDePasse = new JButton("Changer Mot de Passe");
 		changerMotDePasse.setBounds(appInterface.windowsSizeX - 450, appInterface.windowsSizeY - 125, 400, 50);
-		changerMotDePasse.setFont(new Font("Arial", Font.BOLD, 20));
+		changerMotDePasse.setFont(new Font(police, Font.BOLD, 20));
 		changerMotDePasse.setForeground(Color.BLACK);
 		changerMotDePasse.setBackground(Color.LIGHT_GRAY);
 		this.add(changerMotDePasse);
@@ -101,7 +110,7 @@ public class AffichageRayon extends JPanel implements ActionListener{
 		
 		ouvrir = new JButton("Accéder au rayon");
 		ouvrir.setBounds(appInterface.windowsSizeX - 275, 75, 225, 50);
-		ouvrir.setFont(new Font("Arial", Font.BOLD, 20));
+		ouvrir.setFont(new Font(police, Font.BOLD, 20));
 		ouvrir.setForeground(Color.BLACK);
 		ouvrir.setBackground(Color.LIGHT_GRAY);
 		this.add(ouvrir);
@@ -109,7 +118,7 @@ public class AffichageRayon extends JPanel implements ActionListener{
 		
 		gestionDesUtilisateurs = new JButton("Gestion des utilisateurs");
 		gestionDesUtilisateurs.setBounds(75, 75, 300, 50);
-		gestionDesUtilisateurs.setFont(new Font("Arial", Font.BOLD, 20));
+		gestionDesUtilisateurs.setFont(new Font(police, Font.BOLD, 20));
 		gestionDesUtilisateurs.setForeground(Color.BLACK);
 		gestionDesUtilisateurs.setBackground(Color.LIGHT_GRAY);
 		this.add(gestionDesUtilisateurs);
@@ -133,15 +142,15 @@ public class AffichageRayon extends JPanel implements ActionListener{
 
 			if(isChefMagasin) {
 				String nom = JOptionPane.showInputDialog(null, "Nom du rayon", "Ajout d'un rayon", JOptionPane.QUESTION_MESSAGE);
-				gestionRayon.ajouterRayon(nom, idUser);
+				if(!nom.equals(""))
+					gestionRayon.ajouterRayon(nom, idUser);
+				
 				JPanel AffichageRayon = new AffichageRayon(frame, isChefMagasin, idUser);
 				frame.repaint();
 				frame.revalidate();
 			}
 			else {
-				int retour = JOptionPane.showConfirmDialog(this,
-						"Seul le chef de magasin peut ajouter des rayons",
-						"CONFIRM", JOptionPane.YES_OPTION);
+				JOptionPane.showMessageDialog(null, "Seul le chef de magasin peut ajouter des rayons");
 			}
 			
 		}
@@ -158,9 +167,7 @@ public class AffichageRayon extends JPanel implements ActionListener{
 				}
 			}
 			else {
-				int retour = JOptionPane.showConfirmDialog(this,
-						"Seul le chef de magasin peut ajouter des rayons",
-						"CONFIRM", JOptionPane.YES_OPTION);
+				JOptionPane.showMessageDialog(null, "Seul le chef de magasin peut supprimer des rayons");
 			}
 		}
 		
@@ -177,7 +184,7 @@ public class AffichageRayon extends JPanel implements ActionListener{
 							"Nouveau nom du rayon",
 							"Modifier", JOptionPane.QUESTION_MESSAGE);
 	
-					if (!retour.isEmpty())
+					if (!retour.equals(""))
 						gestionRayon.modifierRayon((Integer)table.getValueAt(table.getSelectedRow(), 0), retour);
 					
 					JPanel AffichageRayon = new AffichageRayon(frame, isChefMagasin, idUser);
@@ -186,9 +193,7 @@ public class AffichageRayon extends JPanel implements ActionListener{
 				}
 			}
 			else {
-				int retour = JOptionPane.showConfirmDialog(this,
-						"Seul le chef de magasin peut modifier des rayons",
-						"CONFIRM", JOptionPane.YES_OPTION);
+				JOptionPane.showMessageDialog(null, "Seul le chef de magasin peut modifier des rayons");
 			}
 		}
 		
@@ -200,8 +205,10 @@ public class AffichageRayon extends JPanel implements ActionListener{
 		
 		if (e.getSource() == changerMotDePasse) {
 			String newPasswd = JOptionPane.showInputDialog(null, "Entrer votre nouveau mot de passe", "Changement mot de passe", JOptionPane.QUESTION_MESSAGE);
-			gestionUtilisateur.changerMDP(idUser, isChefMagasin, newPasswd);
-			JOptionPane.showMessageDialog(null, "Mot de passe changé");
+			if(!newPasswd.equals("")) {
+				gestionUtilisateur.changerMDP(idUser, isChefMagasin, newPasswd);
+				JOptionPane.showMessageDialog(null, "Mot de passe changé");
+			}
 		}
 	}
 }

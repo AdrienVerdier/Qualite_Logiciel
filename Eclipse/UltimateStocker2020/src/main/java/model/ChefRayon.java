@@ -1,6 +1,11 @@
 package model;
 import javax.persistence.*;
 
+/**
+ * Cette classe représente un chef de rayon
+ * @author Pierre Savary & Adrien Verdier
+ *
+ */
 @Entity
 public class ChefRayon {
 	@Id

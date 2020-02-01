@@ -10,8 +10,22 @@ import model.Rayon;
 import model.ChefMagasin;
 import model.ChefRayon;
 
+/**
+ * Cette classe représente l'ensemble des méthodes permettant la gestion des rayons
+ * @author Pierre Savary & Adrien Verdier
+ *
+ */
 public class gestionRayon {
 	
+	private gestionRayon() {
+		
+	}
+	
+	/**
+	 * Cette méthode permet d'ajouter un rayon
+	 * @param nom nom du rayon
+	 * @param IDChefMagasin identifiant du chef de magasin associé
+	 */
 	public static void ajouterRayon(String nom, int IDChefMagasin) {		
 		ChefMagasin chefMagasin = ChefMagasinDAO.rechercheChefMagasinById(IDChefMagasin);
 		Rayon rayon = new Rayon(RayonDAO.returnMaxIDRayon(), nom, null, null, chefMagasin);
@@ -19,6 +33,11 @@ public class gestionRayon {
 		RayonDAO.ajouterRayon(rayon);
 	}
 	
+	/**
+	 * Cette méthode permet de modifier un rayon
+	 * @param idRayon identifiant du rayon à modifier
+	 * @param nouveauNom nouveau nom du rayon
+	 */
 	public static void modifierRayon(int idRayon, String nouveauNom) {
 		Rayon rayon = RayonDAO.rechercheRayonById(idRayon);
 		rayon.setNom(nouveauNom);
@@ -46,6 +65,11 @@ public class gestionRayon {
 		return RayonDAO.returnAllRayon();			
 	}
 	
+	/**
+	 * Cette méthode permet de récupérer la liste des rayon associé à un chef de rayon
+	 * @param IDChefRayon identifiant du chef de rayon
+	 * @return la liste des rayons
+	 */
 	public static ArrayList<Rayon> getRayon(int IDChefRayon){
 		Iterator<Rayon> iter = RayonDAO.returnAllRayon().iterator();
 		ArrayList<Rayon> retour = new ArrayList<Rayon>();
@@ -61,6 +85,11 @@ public class gestionRayon {
 		return retour;
 	}
 	
+	/**
+	 * Cette méthode permet de remplis une liste déroulante avec les rayons
+	 * @param dropDownList la liste à remplir
+	 * @return la liste rempli
+	 */
 	public static JComboBox<String> RemplirListeRayon (JComboBox<String> dropDownList){
 		Iterator<Rayon> rayon = RayonDAO.returnAllRayon().iterator();
 		Rayon tmp;

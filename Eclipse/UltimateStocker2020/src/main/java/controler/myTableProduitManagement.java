@@ -7,6 +7,11 @@ import javax.swing.table.AbstractTableModel;
 
 import model.Produit;
 
+/**
+ * Cette classe contient les méthodes qui vont permettre de remplis la JTable affichant les produits
+ * @author Pierre Savary & Adrien Verdier
+ *
+ */
 public class myTableProduitManagement extends AbstractTableModel {
 
 	private static final long serialVersionUID = 1L;
@@ -31,6 +36,7 @@ public class myTableProduitManagement extends AbstractTableModel {
 		return gestionProduit.nombreProduit(idRayon);
 	}
 
+	@Override
 	public String getColumnName(int col) {
 		return columnNames[col];
 	}
@@ -56,11 +62,14 @@ public class myTableProduitManagement extends AbstractTableModel {
 				return produitSelected.getIDProduit();
 			case 1:
 				return produitSelected.getNom();
+			default:
+				return "";
 			}
 		}
 		return null;
 	}
 
+	@Override
 	public Class<? extends Object> getColumnClass(int c) {
 		if (getValueAt(0, c) != null)
 			return getValueAt(0, c).getClass();

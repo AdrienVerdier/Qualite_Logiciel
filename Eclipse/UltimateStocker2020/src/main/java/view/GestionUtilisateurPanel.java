@@ -34,6 +34,11 @@ import javax.swing.table.TableRowSorter;
 import controler.gestionUtilisateur;
 import controler.myTableUtilisateurManagement;
 
+/**
+ * Cette classe représente le panel qui va représenter la page de gestion des utilisateurs
+ * @author Pierre Savary & Adrien Verdier
+ *
+ */
 public class GestionUtilisateurPanel extends JPanel implements ActionListener{
 	
 	private static final long serialVersionUID = 6L;
@@ -42,11 +47,17 @@ public class GestionUtilisateurPanel extends JPanel implements ActionListener{
 	private JFrame frame;
 	private JTable table;
 	private myTableUtilisateurManagement tablemodel;
+	private String police = "Arial";
 	private JLabel label;
-	private TableRowSorter<myTableUtilisateurManagement> sorter;
 	private int idUser;
 	private boolean isChefMagasin;
 
+	/**
+	 * Cette méthode crée tous les objets qui vont être affiché sur le panel
+	 * @param frame la frame ou doit s'afficher le panel
+	 * @param idUser l'identifiant de l'utilisateur connecté
+	 * @param isChefMagasin booléen précisant si l'utilisateur connecté est un chef de magasin
+	 */
 	public GestionUtilisateurPanel(JFrame frame, int idUser, boolean isChefMagasin) {
 		this.idUser = idUser;
 		this.frame = frame;
@@ -57,13 +68,13 @@ public class GestionUtilisateurPanel extends JPanel implements ActionListener{
 
 		label = new JLabel("Gestion des utilisateurs");
 		label.setLayout(null);
-		label.setFont(new Font("Arial", Font.BOLD, 20));
+		label.setFont(new Font(police, Font.BOLD, 20));
 		label.setBounds(25, 0, 250, 40);
 		this.add(label);
 
 		modifierButton = new JButton("Modifier");
 		modifierButton.setLayout(new BorderLayout());
-		modifierButton.setFont(new Font("Arial", Font.BOLD, 20));
+		modifierButton.setFont(new Font(police, Font.BOLD, 20));
 		modifierButton.setBounds(appInterface.windowsSizeX - 225, appInterface.windowsSizeY - 350, 175, 50);
 		modifierButton.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 		modifierButton.setBackground(Color.LIGHT_GRAY);
@@ -73,7 +84,7 @@ public class GestionUtilisateurPanel extends JPanel implements ActionListener{
 
 		addButton = new JButton("Ajouter");
 		addButton.setBounds(appInterface.windowsSizeX - 225, appInterface.windowsSizeY - 500, 175, 50);
-		addButton.setFont(new Font("Arial", Font.BOLD, 20));
+		addButton.setFont(new Font(police, Font.BOLD, 20));
 		addButton.setForeground(Color.BLACK);
 		addButton.setBackground(Color.LIGHT_GRAY);
 		this.add(addButton);
@@ -88,17 +99,15 @@ public class GestionUtilisateurPanel extends JPanel implements ActionListener{
 		table.getTableHeader().setFont(new Font("Arial", Font.BOLD, 13));
 		table.getTableHeader().setForeground(Color.blue);
 		table.getTableHeader().setBackground(new Color(51, 153, 255));
-		table.setFont(new Font("Arial", Font.BOLD, 13));
+		table.setFont(new Font(police, Font.BOLD, 13));
 		table.setAutoCreateRowSorter(true);
 		table.getTableHeader().setReorderingAllowed(false);
 		tableContainer.setBounds(50, 200, 700, 400);
 		this.add(tableContainer, BorderLayout.CENTER);
 
-		sorter = new TableRowSorter<myTableUtilisateurManagement>(tablemodel);
-
 		suppressButton = new JButton("Supprimer");
 		suppressButton.setBounds(appInterface.windowsSizeX - 225, appInterface.windowsSizeY - 425, 175, 50);
-		suppressButton.setFont(new Font("Arial", Font.BOLD, 20));
+		suppressButton.setFont(new Font(police, Font.BOLD, 20));
 		suppressButton.setForeground(Color.BLACK);
 		suppressButton.setBackground(Color.LIGHT_GRAY);
 		this.add(suppressButton);
@@ -106,7 +115,7 @@ public class GestionUtilisateurPanel extends JPanel implements ActionListener{
 
 		returnButton = new JButton("RETOUR");
 		returnButton.setBounds(appInterface.windowsSizeX - 225, appInterface.windowsSizeY - 125, 175, 50);
-		returnButton.setFont(new Font("Arial", Font.BOLD, 20));
+		returnButton.setFont(new Font(police, Font.BOLD, 20));
 		returnButton.setForeground(Color.BLACK);
 		returnButton.setBackground(Color.LIGHT_GRAY);
 		this.add(returnButton);
@@ -115,9 +124,7 @@ public class GestionUtilisateurPanel extends JPanel implements ActionListener{
 	}
 
 	/**
-	 * This method gathers the different action of the panel
-	 * 
-	 * @param e The action that is performed
+	 * Cette méthode représente toutes les actions qui vont être faites lors de l'activation d'un bouton
 	 */
 	public void actionPerformed(ActionEvent e) {
 

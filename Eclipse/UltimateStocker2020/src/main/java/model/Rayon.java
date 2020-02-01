@@ -4,6 +4,11 @@ import java.util.List;
 
 import javax.persistence.*;
 
+/**
+ * Cette classe représente un rayon
+ * @author Pierre Savary & Adrien Verdier 
+ *
+ */
 @Entity
 public class Rayon {
 	@Id

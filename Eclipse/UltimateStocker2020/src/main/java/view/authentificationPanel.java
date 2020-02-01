@@ -30,6 +30,7 @@ public class authentificationPanel extends JPanel implements ActionListener{
 	private static final long serialVersionUID = 7L;
 	private JButton connexion;
 	private JFrame frame;
+	private String police = "Arial";
 	private JLabel textLabel1, textLabel2, titre, validateLabel;
 	private JTextField textZone1;
 	private JPasswordField textZone2;
@@ -50,7 +51,7 @@ public class authentificationPanel extends JPanel implements ActionListener{
 		
 		titre = new JLabel("Connexion");
 		titre.setLayout(null);
-		titre.setFont(new Font("Arial", Font.BOLD, 20));
+		titre.setFont(new Font(police, Font.BOLD, 20));
 		titre.setBounds(25, 0, 250, 40);
 		this.add(titre);
 		
@@ -63,12 +64,12 @@ public class authentificationPanel extends JPanel implements ActionListener{
 		
 		chefMagasin = new JCheckBox("Chef de Magasin");
 		chefMagasin.setBounds(appInterface.windowsSizeX - 800, appInterface.windowsSizeY - 500, 300, 50);
-		chefMagasin.setFont(new Font("Arial", Font.BOLD, 20));
+		chefMagasin.setFont(new Font(police, Font.BOLD, 20));
 		this.add(chefMagasin);
 		
 		connexion = new JButton("Connexion");
 		connexion.setBounds(appInterface.windowsSizeX /2, appInterface.windowsSizeY / 2, 350, 80);
-		connexion.setFont(new Font("Arial", Font.BOLD, 20));
+		connexion.setFont(new Font(police, Font.BOLD, 20));
 		connexion.setForeground(Color.BLACK);
 		connexion.setBackground(Color.LIGHT_GRAY);
 		this.add(connexion);
@@ -76,7 +77,7 @@ public class authentificationPanel extends JPanel implements ActionListener{
 		
 		textLabel1 = new JLabel("ID Utilisateur", SwingConstants.CENTER);
 		textLabel1.setLayout(null);
-		textLabel1.setFont(new Font("Arial", Font.BOLD, 20));
+		textLabel1.setFont(new Font(police, Font.BOLD, 20));
 		textLabel1.setBounds(appInterface.windowsSizeX - 850, appInterface.windowsSizeY - 700, 350, 50);
 		textLabel1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 		textLabel1.setBackground(Color.LIGHT_GRAY);
@@ -84,7 +85,7 @@ public class authentificationPanel extends JPanel implements ActionListener{
 		this.add(textLabel1);
 
 		textZone1 = new JTextField();
-		textZone1.setFont(new Font("Arial", Font.BOLD, 20));
+		textZone1.setFont(new Font(police, Font.BOLD, 20));
 		textZone1.setLayout(null);
 		textZone1.setBounds(appInterface.windowsSizeX - 500, appInterface.windowsSizeY - 700, 300, 50);
 		this.add(textZone1);
@@ -92,7 +93,7 @@ public class authentificationPanel extends JPanel implements ActionListener{
 
 		textLabel2 = new JLabel("Mot de passe", SwingConstants.CENTER);
 		textLabel2.setLayout(null);
-		textLabel2.setFont(new Font("Arial", Font.BOLD, 20));
+		textLabel2.setFont(new Font(police, Font.BOLD, 20));
 		textLabel2.setBounds(appInterface.windowsSizeX - 850, appInterface.windowsSizeY - 600, 350, 50);
 		textLabel2.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 		textLabel2.setBackground(Color.LIGHT_GRAY);
@@ -100,7 +101,7 @@ public class authentificationPanel extends JPanel implements ActionListener{
 		this.add(textLabel2);
 
 		textZone2 = new JPasswordField();
-		textZone2.setFont(new Font("Arial", Font.BOLD, 20));
+		textZone2.setFont(new Font(police, Font.BOLD, 20));
 		textZone2.setLayout(null);
 		textZone2.setBounds(appInterface.windowsSizeX - 500, appInterface.windowsSizeY - 600, 300, 50);
 		textZone2.setHorizontalAlignment(JTextField.CENTER);

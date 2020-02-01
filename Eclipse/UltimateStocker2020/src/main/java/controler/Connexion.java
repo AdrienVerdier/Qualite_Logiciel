@@ -2,7 +2,16 @@ package controler;
 
 import javax.persistence.*;
 
+/**
+ * Cette classe fournit les méthode permettant la connexion avec la base de donnée
+ * @author adrien
+ *
+ */
 public class Connexion {
+	
+	private Connexion() {
+		
+	}
 	
 	private static EntityManagerFactory emf;
 	private static EntityManager em;

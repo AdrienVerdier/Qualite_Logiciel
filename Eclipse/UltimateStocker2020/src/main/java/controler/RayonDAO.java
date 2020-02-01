@@ -10,6 +10,11 @@ import model.Produit;
 import model.Rayon;
 
 public class RayonDAO {
+	
+	private RayonDAO() {
+		
+	}
+	
 	/**
 	 * Cette méthode ajoute un rayon à la base de données
 	 * 

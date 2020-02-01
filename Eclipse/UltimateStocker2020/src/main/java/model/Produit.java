@@ -2,6 +2,11 @@ package model;
 
 import javax.persistence.*;
 
+/**
+ * Cette classe représente un produit
+ * @author Pierre Savary & Adrien Verdier
+ *
+ */
 @Entity
 public class Produit {
 	@Id

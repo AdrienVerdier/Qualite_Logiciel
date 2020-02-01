@@ -4,4 +4,4 @@ a exécuter à la base du projet pour lancer le scan sonar
 Et penser à lancer le .bat qui est dans sonarqube
 
 Générer le rapport sonar .pdf :
-mvn org.codehaus.sonar-plugins:pdf-report:0.1:generate -Dsonar.base.url=http://nommachine:9000
+mvn org.codehaus.sonar-plugins:pdf-report:0.1:generate -Dsonar.base.url=http://127.0.0.1:9000

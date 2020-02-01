@@ -4,6 +4,11 @@ import java.util.List;
 
 import javax.persistence.*;
 
+/**
+ * Cette classe représent un chef de magasin
+ * @author Pierre Savary & Adrien Verdier
+ *
+ */
 @Entity
 public class ChefMagasin {
 	@Id

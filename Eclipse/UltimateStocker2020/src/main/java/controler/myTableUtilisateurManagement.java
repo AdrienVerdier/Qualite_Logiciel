@@ -7,6 +7,11 @@ import javax.swing.table.AbstractTableModel;
 
 import model.ChefRayon;
 
+/**
+ * Cette classe contient les méthode qui vont permettre de remplis la JTable pour afficher les utilisateurs
+ * @author Pierre Savary & Adrien Verdier
+ *
+ */
 public class myTableUtilisateurManagement extends AbstractTableModel {
 	
 	private static final long serialVersionUID = 3L;
@@ -29,6 +34,7 @@ public class myTableUtilisateurManagement extends AbstractTableModel {
 		return gestionUtilisateur.nombreChefRayon();
 	}
 
+	@Override
 	public String getColumnName(int col) {
 		return columnNames[col];
 	}
@@ -58,11 +64,14 @@ public class myTableUtilisateurManagement extends AbstractTableModel {
 				return utilisateurSelected.getPrenom();
 			case 3:
 				return utilisateurSelected.getIDRayon().getIDRayon();
+			default:
+				return "";
 			}
 		}
 		return null;
 	}
 
+	@Override
 	public Class<? extends Object> getColumnClass(int c) {
 		if (getValueAt(0, c) != null)
 			return getValueAt(0, c).getClass();

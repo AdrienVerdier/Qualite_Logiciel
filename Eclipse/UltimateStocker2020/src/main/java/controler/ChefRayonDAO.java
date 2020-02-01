@@ -8,6 +8,10 @@ import javax.persistence.Query;
 import model.ChefRayon;
 
 public class ChefRayonDAO {
+	
+	private ChefRayonDAO() {
+		
+	}
 
 	/**
 	 * Cette méthode ajoute un chef de rayon à la base de données

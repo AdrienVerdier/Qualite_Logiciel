@@ -24,19 +24,31 @@ import controler.gestionProduit;
 import controler.gestionUtilisateur;
 import controler.myTableProduitManagement;
 
+/**
+ * Cette classe représente le panel qui permet de gérer les produits
+ * @author Pierre Savary & Adrien Verdier
+ *
+ */
 public class AffichageProduitPanel extends JPanel implements ActionListener {
 	
 	private static final long serialVersionUID = 4L;
-	private JButton addButton, suppressButton, modifier, changerMotDePasse, retour, ouvrir;
+	private JButton addButton, suppressButton, changerMotDePasse, retour, ouvrir;
 	private JFrame frame;
 	private JTable table;
+	private String police = "Arial";
 	private myTableProduitManagement tablemodel;
 	private JLabel label;
-	private TableRowSorter<myTableProduitManagement> sorter;
 	private int idUser;
 	private boolean isChefMagasin;
 	private int idRayon;
 
+	/**
+	 * Cette méthode permet de créer les objets qui vont être présent sur le panel
+	 * @param frame la frame sur laquelle doit s'afficher le panel
+	 * @param idUser identifiant de l'utilisateur connecté à l'application
+	 * @param isChefMagasin booléen précisant si l'utilisateur connecté est un chef de magasin
+	 * @param idRayon identifiant du rayon dans lequel on se trouve
+	 */
 	public AffichageProduitPanel(JFrame frame, int idUser, boolean isChefMagasin , int idRayon) {
 		this.idUser = idUser;
 		this.isChefMagasin = isChefMagasin;
@@ -48,13 +60,13 @@ public class AffichageProduitPanel extends JPanel implements ActionListener {
 
 		label = new JLabel("Visionnage des produits");
 		label.setLayout(null);
-		label.setFont(new Font("Arial", Font.BOLD, 20));
+		label.setFont(new Font(police, Font.BOLD, 20));
 		label.setBounds(25, 0, 250, 40);
 		this.add(label);
 
 		addButton = new JButton("Ajouter");
 		addButton.setBounds(appInterface.windowsSizeX - 225, appInterface.windowsSizeY - 500, 175, 50);
-		addButton.setFont(new Font("Arial", Font.BOLD, 20));
+		addButton.setFont(new Font(police, Font.BOLD, 20));
 		addButton.setForeground(Color.BLACK);
 		addButton.setBackground(Color.LIGHT_GRAY);
 		this.add(addButton);
@@ -75,7 +87,7 @@ public class AffichageProduitPanel extends JPanel implements ActionListener {
 		table = new JTable(tablemodel);
 		tablemodel.setTable(table);
 		JScrollPane tableContainer = new JScrollPane(table);
-		table.getTableHeader().setFont(new Font("Arial", Font.BOLD, 13));
+		table.getTableHeader().setFont(new Font(police, Font.BOLD, 13));
 		table.getTableHeader().setForeground(Color.blue);
 		table.getTableHeader().setBackground(new Color(51, 153, 255));
 		table.setFont(new Font("Arial", Font.BOLD, 13));
@@ -84,11 +96,9 @@ public class AffichageProduitPanel extends JPanel implements ActionListener {
 		tableContainer.setBounds(50, 200, 700, 400);
 		this.add(tableContainer, BorderLayout.CENTER);
 
-		sorter = new TableRowSorter<myTableProduitManagement>(tablemodel);
-
 		suppressButton = new JButton("Supprimer");
 		suppressButton.setBounds(appInterface.windowsSizeX - 225, appInterface.windowsSizeY - 425, 175, 50);
-		suppressButton.setFont(new Font("Arial", Font.BOLD, 20));
+		suppressButton.setFont(new Font(police, Font.BOLD, 20));
 		suppressButton.setForeground(Color.BLACK);
 		suppressButton.setBackground(Color.LIGHT_GRAY);
 		this.add(suppressButton);
@@ -105,7 +115,7 @@ public class AffichageProduitPanel extends JPanel implements ActionListener {
 		
 		changerMotDePasse = new JButton("Changer Mot de Passe");
 		changerMotDePasse.setBounds(appInterface.windowsSizeX - 450, appInterface.windowsSizeY - 125, 400, 50);
-		changerMotDePasse.setFont(new Font("Arial", Font.BOLD, 20));
+		changerMotDePasse.setFont(new Font(police, Font.BOLD, 20));
 		changerMotDePasse.setForeground(Color.BLACK);
 		changerMotDePasse.setBackground(Color.LIGHT_GRAY);
 		this.add(changerMotDePasse);
@@ -113,7 +123,7 @@ public class AffichageProduitPanel extends JPanel implements ActionListener {
 		
 		ouvrir = new JButton("Visionner");
 		ouvrir.setBounds(appInterface.windowsSizeX - 275, 75, 225, 50);
-		ouvrir.setFont(new Font("Arial", Font.BOLD, 20));
+		ouvrir.setFont(new Font(police, Font.BOLD, 20));
 		ouvrir.setForeground(Color.BLACK);
 		ouvrir.setBackground(Color.LIGHT_GRAY);
 		this.add(ouvrir);
@@ -121,7 +131,7 @@ public class AffichageProduitPanel extends JPanel implements ActionListener {
 		
 		retour = new JButton("retour");
 		retour.setBounds(125, appInterface.windowsSizeY - 125, 175, 50);
-		retour.setFont(new Font("Arial", Font.BOLD, 20));
+		retour.setFont(new Font(police, Font.BOLD, 20));
 		retour.setForeground(Color.BLACK);
 		retour.setBackground(Color.LIGHT_GRAY);
 		this.add(retour);
@@ -168,8 +178,10 @@ public class AffichageProduitPanel extends JPanel implements ActionListener {
 		
 		if (e.getSource() == changerMotDePasse) {
 			String newPasswd = JOptionPane.showInputDialog(null, "Entrer votre nouveau mot de passe", "Changement mot de passe", JOptionPane.QUESTION_MESSAGE);
-			gestionUtilisateur.changerMDP(idUser, isChefMagasin, newPasswd);
-			JOptionPane.showMessageDialog(null, "Mot de passe changé");
+			if(!newPasswd.equals("")) {
+				gestionUtilisateur.changerMDP(idUser, isChefMagasin, newPasswd);
+				JOptionPane.showMessageDialog(null, "Mot de passe changé");
+			}
 		}
 	}
 

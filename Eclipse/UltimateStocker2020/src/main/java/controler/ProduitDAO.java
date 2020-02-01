@@ -9,6 +9,10 @@ import model.Produit;
 
 public class ProduitDAO {
 
+	private ProduitDAO() {
+		
+	}
+	
 	/**
 	 * Cette méthode ajoute un produit à la base de données
 	 * 
