@@ -7,7 +7,7 @@ Feature: Test classe GestionProduit Utilisateur
 
   @tag1
   Scenario: Ajout d'un produit par un chef de rayon
-    Given un chef de rayon connectéa l'application pour le premier test de GestionProduitUtilisateur
+    Given un chef de rayon connecte a l'application pour le premier test de GestionProduitUtilisateur
     When Il ajoute un produit a la base de donnee pour le premier test de GestionProduitUtilisateur
     Then Le produit se trouve dans l'application pour le premier test de GestionProduitUtilisateur
 

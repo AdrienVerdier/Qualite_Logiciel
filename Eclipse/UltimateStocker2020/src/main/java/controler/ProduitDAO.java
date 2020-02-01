@@ -92,7 +92,7 @@ public class ProduitDAO {
 		String queryString = "select p from Produit p";
 		Query query = Connexion.getEM().createQuery(queryString);
 		List results = query.getResultList();
-		int max = 0;
+		int max = 1;
 		for (int i = 0; i < results.size(); i++) {
 			Produit Produit = (Produit) results.get(i);
 			if (Produit.getIDProduit() >= max) {

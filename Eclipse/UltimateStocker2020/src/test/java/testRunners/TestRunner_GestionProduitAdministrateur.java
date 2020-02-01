@@ -9,7 +9,6 @@ import controler.ProduitDAO;
 import controler.RayonDAO;
 import controler.gestionProduit;
 import controler.gestionUtilisateur;
-import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -32,16 +31,6 @@ public class TestRunner_GestionProduitAdministrateur {
 		ChefMagasinDAO.ajouterChefMagasinChefRayon(ChefMagasin1, ChefRayon1);
 		RayonDAO.ajouterRayonChefRayon(Rayon1, ChefRayon1);
 		ChefRayonDAO.ajouterChefRayon(ChefRayon1);
-	}
-
-	@After
-	public void cleanUp() {
-		ChefMagasin ChefMagasin1 = ChefMagasinDAO.rechercheChefMagasinById(1);
-		ChefMagasinDAO.supprimerChefMagasin(ChefMagasin1);
-		Rayon rayon1 = RayonDAO.rechercheRayonById(1);
-		RayonDAO.supprimerRayon(rayon1);
-		ChefRayon chefRayon1 = ChefRayonDAO.rechercheChefRayonById(1);
-		ChefRayonDAO.supprimerChefRayon(chefRayon1);
 	}
 
 	@Given("un chef de magasin connecte a l'application pour le premier test de GestionProduitAdministrateur")

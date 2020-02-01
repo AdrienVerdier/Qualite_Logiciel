@@ -129,7 +129,7 @@ public class ChefMagasinDAO {
 		String queryString = "select c from ChefMagasin c";
 		Query query = Connexion.getEM().createQuery(queryString);
 		List results = query.getResultList();
-		int max = 0;
+		int max = 1;
 		for (int i = 0; i < results.size(); i++) {
 			ChefMagasin ChefMagasin = (ChefMagasin) results.get(i);
 			if (ChefMagasin.getIDChefMagasin() >= max) {

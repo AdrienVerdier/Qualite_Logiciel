@@ -126,7 +126,7 @@ public class RayonDAO {
 		String queryString = "select r from Rayon r";
 		Query query = Connexion.getEM().createQuery(queryString);
 		List results = query.getResultList();
-		int max = 0;
+		int max = 1;
 		for (int i = 0; i < results.size(); i++) {
 			Rayon Rayon = (Rayon) results.get(i);
 			if (Rayon.getIDRayon() >= max) {

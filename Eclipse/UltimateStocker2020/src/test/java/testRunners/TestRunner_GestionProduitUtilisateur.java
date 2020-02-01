@@ -1,13 +1,14 @@
 package testRunners;
 
+import static org.junit.Assert.assertEquals;
+
 import controler.ChefMagasinDAO;
 import controler.ChefRayonDAO;
 import controler.Connexion;
 import controler.ProduitDAO;
 import controler.RayonDAO;
-import controler.gestionUtilisateur;
 import controler.gestionProduit;
-import cucumber.api.java.After;
+import controler.gestionUtilisateur;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -15,7 +16,6 @@ import cucumber.api.java.en.When;
 import model.ChefMagasin;
 import model.ChefRayon;
 import model.Rayon;
-import static org.junit.Assert.*;
 
 public class TestRunner_GestionProduitUtilisateur {
 
@@ -31,16 +31,6 @@ public class TestRunner_GestionProduitUtilisateur {
 		ChefMagasinDAO.ajouterChefMagasinChefRayon(ChefMagasin1, ChefRayon1);
 		RayonDAO.ajouterRayonChefRayon(Rayon1, ChefRayon1);
 		ChefRayonDAO.ajouterChefRayon(ChefRayon1);
-	}
-
-	@After
-	public void cleanUp() {
-		ChefMagasin ChefMagasin1 = ChefMagasinDAO.rechercheChefMagasinById(1);
-		ChefMagasinDAO.supprimerChefMagasin(ChefMagasin1);
-		Rayon rayon1 = RayonDAO.rechercheRayonById(1);
-		RayonDAO.supprimerRayon(rayon1);
-		ChefRayon chefRayon1 = ChefRayonDAO.rechercheChefRayonById(1);
-		ChefRayonDAO.supprimerChefRayon(chefRayon1);
 	}
 
 	@Given("un chef de rayon connecte a l'application pour le premier test de GestionProduitUtilisateur")
