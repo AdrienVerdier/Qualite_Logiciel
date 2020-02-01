@@ -171,17 +171,24 @@ public class AffichageRayon extends JPanel implements ActionListener{
 		}
 		
 		if(e.getSource() == modifier) {
-			if (table.getSelectedRow() != -1) {
-				String retour = JOptionPane.showInputDialog(null,
-						"Nouveau nom du rayon",
-						"Modifier", JOptionPane.QUESTION_MESSAGE);
-
-				if (!retour.isEmpty())
-					gestionRayon.modifierRayon((Integer)table.getValueAt(table.getSelectedRow(), 0), retour);
-				
-				JPanel AffichageRayon = new AffichageRayon(frame, isChefMagasin, idUser);
-				frame.repaint();
-				frame.revalidate();
+			if(isChefMagasin) {
+				if (table.getSelectedRow() != -1) {
+					String retour = JOptionPane.showInputDialog(null,
+							"Nouveau nom du rayon",
+							"Modifier", JOptionPane.QUESTION_MESSAGE);
+	
+					if (!retour.isEmpty())
+						gestionRayon.modifierRayon((Integer)table.getValueAt(table.getSelectedRow(), 0), retour);
+					
+					JPanel AffichageRayon = new AffichageRayon(frame, isChefMagasin, idUser);
+					frame.repaint();
+					frame.revalidate();
+				}
+			}
+			else {
+				int retour = JOptionPane.showConfirmDialog(this,
+						"Seul le chef de magasin peut modifier des rayons",
+						"CONFIRM", JOptionPane.YES_OPTION);
 			}
 		}
 		

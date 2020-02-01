@@ -145,8 +145,8 @@ public class GestionUtilisateurPanel extends JPanel implements ActionListener{
 			if (table.getSelectedRow() != -1) {
 
 				int retour = JOptionPane.showConfirmDialog(this,
-						"Êtes-vous sûr de vouloir supprimer ce clap",
-						"TITRE", JOptionPane.YES_NO_OPTION);
+						"Êtes-vous sûr de vouloir supprimer cet utilisateur",
+						"Suppression", JOptionPane.YES_NO_OPTION);
 
 				if (retour == JOptionPane.OK_OPTION)
 					tablemodel.removeRow(table.getSelectedRow());

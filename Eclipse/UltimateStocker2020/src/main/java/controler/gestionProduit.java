@@ -8,10 +8,10 @@ import model.Rayon;
 
 public class gestionProduit {
 	
-	public static boolean ajouterProduit(String description, int prix, int quantite, int codeRayon) {
+	public static boolean ajouterProduit(String nom, String description, int prix, int quantite, int codeRayon) {
 		if(RayonDAO.rechercheRayonById(codeRayon) != null) {
 			Rayon rayon = RayonDAO.rechercheRayonById(codeRayon);
-			Produit produit = new Produit(ProduitDAO.returnMaxIDProduit(), prix, quantite, description, rayon);		
+			Produit produit = new Produit(ProduitDAO.returnMaxIDProduit(), nom, prix, quantite, description, rayon);		
 			RayonDAO.ajouterRayonProduit(rayon, produit);
 			ProduitDAO.ajouterProduit(produit);
 		}
@@ -19,8 +19,9 @@ public class gestionProduit {
 		return true;
 	}
 	
-	public static void modifierProduit(int idProduit, String description, int prix, int quantite, int codeRayon) {
+	public static void modifierProduit(int idProduit, String nom, String description, int prix, int quantite, int codeRayon) {
 		Produit produit = ProduitDAO.rechercheProduitById(idProduit);
+		produit.setNom(nom);
 		produit.setDescription(description);
 		produit.setIDRayon(RayonDAO.rechercheRayonById(codeRayon));
 		produit.setPrix(prix);
@@ -32,8 +33,8 @@ public class gestionProduit {
 		return getProduit(codeRayon).size();
 	}
 	
-	public static void supprimerProduit(int codeRayon) {
-		ProduitDAO.supprimerProduit(ProduitDAO.rechercheProduitById(codeRayon));
+	public static void supprimerProduit(int codeProduit) {
+		ProduitDAO.supprimerProduit(ProduitDAO.rechercheProduitById(codeProduit));
 	}
 	
 	public static ArrayList<Produit> getProduit(){
@@ -68,6 +69,11 @@ public class gestionProduit {
 	public static int getPrix(int IDProduit) {
 		Produit produit = ProduitDAO.rechercheProduitById(IDProduit);
 		return produit.getPrix();
+	}
+	
+	public static String getNom (int IDProduit) {
+		Produit produit = ProduitDAO.rechercheProduitById(IDProduit);
+		return produit.getNom();
 	}
 
 }

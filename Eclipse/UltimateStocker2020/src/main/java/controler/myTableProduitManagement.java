@@ -55,11 +55,7 @@ public class myTableProduitManagement extends AbstractTableModel {
 			case 0:
 				return produitSelected.getIDProduit();
 			case 1:
-				return produitSelected.getPrix();
-			case 2:
-				return produitSelected.getQuantite();
-			case 3:
-				return produitSelected.getDescription();
+				return produitSelected.getNom();
 			}
 		}
 		return null;
