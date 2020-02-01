@@ -20,4 +20,4 @@ prochain lancement de l'application.
 
 L'application est configuré pour accéder à une base de données se trouvant en localhost (127.0.0.1) avec les noms explicité plus tôt. 
 Si vous voulez modifier ces informations, il faut modifier le fichier persistence.xml se trouvant au chemin : 
-[DI4][PierreSavary-AdrienVerdier]/projet/src/main/java/META-INF/persistence.xml
+[DI4][PierreSavary-AdrienVerdier]/code_sources/src/main/java/META-INF/persistence.xml
